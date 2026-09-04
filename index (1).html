@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selected Publications — Shaojing Fan</title>
+<meta name="description" content="Selected publications accompanying the seminar 'Bridging Machine Learning and Human Cognition: Towards Human-Centred and Trustworthy AI'.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#263478;          /* seminar deck navy */
+    --navy-deep:#1b2555;
+    --orange:#e07b00;        /* accent (slightly deepened deck orange for contrast) */
+    --ink:#1d2231;
+    --muted:#5b667a;
+    --line:#e4e8f1;
+    --band:#f6f8fc;
+    --paper:#ffffff;
+    --gold-bg:#fdefd9;
+    --gold-tx:#9a5a00;
+    --maxw:60rem;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:1.4rem}
+
+  /* ---- top bar ---- */
+  .topbar{
+    position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);
+    backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex;align-items:center;gap:1.2rem;height:56px}
+  .brand{font-family:Spectral,Georgia,serif;font-weight:600;color:var(--navy);
+    font-size:1.02rem;letter-spacing:.2px;white-space:nowrap;margin-right:auto}
+  .brand span{color:var(--orange)}
+  .jump{display:flex;gap:1.1rem}
+  .jump a{font-size:.86rem;color:var(--muted);text-decoration:none;padding:.2rem 0;
+    border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+  .jump a:hover,.jump a:focus-visible{color:var(--navy);border-color:var(--orange)}
+  @media (max-width:680px){.jump{display:none}}
+
+  /* ---- hero ---- */
+  .hero{padding:3.6rem 0 2.2rem;border-bottom:1px solid var(--line)}
+  .kicker{font-size:.82rem;color:var(--muted);margin:0 0 1rem}
+  .kicker b{color:var(--navy);font-weight:600}
+  h1{font-family:Spectral,Georgia,serif;font-weight:600;color:var(--navy);
+    font-size:clamp(2.1rem,5.5vw,3.15rem);line-height:1.06;margin:.2rem 0 .1rem;
+    letter-spacing:-.01em}
+  .lede{max-width:44rem;color:var(--ink);font-size:1.05rem;margin:1rem 0 0}
+  .arc{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 0;
+    font-family:Spectral,serif;font-size:.95rem;color:var(--muted)}
+  .arc b{color:var(--navy);font-weight:500}
+  .arc .sep{color:var(--orange);font-weight:600}
+  .actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.9rem}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;
+    font-weight:500;text-decoration:none;padding:.6rem 1.05rem;border-radius:8px;
+    border:1px solid var(--navy);transition:background .15s,color .15s,box-shadow .15s}
+  .btn.primary{background:var(--navy);color:#fff}
+  .btn.primary:hover,.btn.primary:focus-visible{background:var(--navy-deep)}
+  .btn.ghost{background:#fff;color:var(--navy)}
+  .btn.ghost:hover,.btn.ghost:focus-visible{background:var(--band)}
+
+  /* ---- filter ---- */
+  .filterbar{margin:2.2rem 0 .4rem;display:flex;align-items:center;gap:.8rem}
+  .filterbar input{
+    flex:1;min-width:0;font:inherit;font-size:.95rem;color:var(--ink);
+    padding:.62rem .9rem;border:1px solid var(--line);border-radius:8px;background:#fff}
+  .filterbar input:focus-visible{outline:none;border-color:var(--navy);
+    box-shadow:0 0 0 3px rgba(38,52,120,.12)}
+  .count{font-size:.82rem;color:var(--muted);white-space:nowrap}
+
+  /* ---- sections ---- */
+  section.part{padding:2.4rem 0 1rem;scroll-margin-top:70px}
+  .part-head{display:flex;align-items:baseline;gap:.8rem;
+    border-bottom:2px solid var(--navy);padding-bottom:.6rem;margin-bottom:.2rem}
+  .part-no{font-family:Spectral,serif;font-style:italic;color:var(--orange);
+    font-size:1.05rem;font-weight:500}
+  .part-head h2{font-family:Spectral,Georgia,serif;font-weight:600;color:var(--navy);
+    font-size:1.55rem;margin:0;letter-spacing:-.01em}
+  .part-keys{color:var(--muted);font-size:.88rem;margin:.6rem 0 .4rem}
+
+  /* ---- paper rows ---- */
+  ol.papers{list-style:none;margin:0;padding:0}
+  li.paper{display:grid;grid-template-columns:2.2rem 1fr auto;gap:.4rem 1rem;
+    align-items:start;padding:1.05rem 0;border-bottom:1px solid var(--line)}
+  li.paper[hidden]{display:none}
+  .num{font-family:Spectral,serif;color:var(--orange);font-size:1rem;
+    font-weight:500;padding-top:.15rem;font-variant-numeric:tabular-nums}
+  .title{font-family:Spectral,Georgia,serif;color:var(--navy);font-weight:600;
+    font-size:1.12rem;line-height:1.28;margin:0}
+  .authors{color:var(--ink);font-size:.9rem;margin:.28rem 0 0}
+  .authors strong{color:var(--navy);font-weight:600}
+  .venue{color:var(--muted);font-size:.86rem;margin:.18rem 0 0}
+  .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 0}
+  .tag{font-size:.72rem;font-weight:600;padding:.16rem .5rem;border-radius:999px;
+    background:var(--band);color:var(--navy);border:1px solid var(--line)}
+  .tag.award{background:var(--gold-bg);color:var(--gold-tx);border-color:#f2d9ac}
+  .tag.award::before{content:"★ ";}
+  .actions-cell{display:flex;align-items:center;justify-content:flex-end;padding-top:.15rem}
+  a.pdf{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;
+    font-size:.84rem;font-weight:600;color:var(--navy);border:1px solid var(--navy);
+    padding:.4rem .75rem;border-radius:7px;white-space:nowrap;
+    transition:background .15s,color .15s}
+  a.pdf:hover,a.pdf:focus-visible{background:var(--navy);color:#fff}
+  a.pdf svg{width:14px;height:14px}
+  .soon{font-size:.8rem;color:var(--muted);font-style:italic;white-space:nowrap;padding-top:.15rem}
+
+  .noresult{display:none;color:var(--muted);padding:2rem 0;font-style:italic}
+  .noresult.show{display:block}
+
+  /* ---- footer ---- */
+  footer{margin-top:2.6rem;border-top:1px solid var(--line);background:var(--band)}
+  footer .wrap{padding:2rem 1.4rem;color:var(--muted);font-size:.86rem;
+    display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;align-items:center;justify-content:space-between}
+  footer a{color:var(--navy);text-decoration:none;border-bottom:1px solid transparent}
+  footer a:hover{border-color:var(--orange)}
+
+  @media (max-width:560px){
+    li.paper{grid-template-columns:1.6rem 1fr;grid-template-areas:"num title" ". meta" ". act"}
+    .num{grid-area:num}
+    .paper > .content{grid-area:title}
+    .actions-cell{grid-area:act;justify-content:flex-start;padding-top:.7rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">Shaojing&nbsp;Fan&nbsp;<span>·</span>&nbsp;Publications</div>
+    <nav class="jump" aria-label="Jump to section">
+      <a href="#part1">Perception</a>
+      <a href="#part2">Responses</a>
+      <a href="#part3">Trustworthy AI</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Companion to the seminar · <b>Bridging Machine Learning and Human Cognition: Towards Human-Centred and Trustworthy AI</b></p>
+    <h1>Selected Publications</h1>
+    <p class="lede">The papers behind the talk — organised along the research arc from decoding human perception, to modelling human responses, to building human-centred trustworthy AI. Download any paper below.</p>
+    <p class="arc">
+      <b>Decoding human perception</b> <span class="sep">→</span>
+      <b>Modelling human responses</b> <span class="sep">→</span>
+      <b>Building trustworthy AI</b>
+    </p>
+    <div class="actions">
+      <!-- TODO: replace with your real Google Scholar profile URL -->
+      <a class="btn primary" href="https://scholar.google.com/citations?user=REPLACE_ME" target="_blank" rel="noopener">Google Scholar</a>
+      <a class="btn ghost" href="https://github.com/Fanshaojing" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <div class="filterbar">
+      <input id="filter" type="search" placeholder="Filter by title, author, venue, or year…" aria-label="Filter publications">
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="list">
+  <p class="noresult" id="noresult">No papers match that filter.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Shaojing Fan · Dept. of Electrical &amp; Computer Engineering, National University of Singapore</span>
+    <span><a href="https://github.com/Fanshaojing" target="_blank" rel="noopener">github.com/Fanshaojing</a></span>
+  </div>
+</footer>
+
+<script>
+/* ------------------------------------------------------------------
+   Edit this list to update the page.
+   - Put PDFs in a /papers folder using the filenames below, or change `pdf`.
+   - Set pdf:null and status:"in press" / "under review" when no PDF exists.
+   - Authors: wrap your own name in <strong>…</strong> so it stands out.
+-------------------------------------------------------------------*/
+const PARTS = [
+  {
+    id:"part1", no:"Part I", title:"Decoding human perception",
+    keys:"visual realism · saliency · sentiment · autism screening",
+    papers:[
+      {n:1, authors:'S. <strong>Fan</strong>, T.-T. Ng, J. Herberg, B. Koenig, S. Xin', title:'Real or Fake? Human Judgments about Photos and CG Face Images', venue:'SIGGRAPH Asia (Technical Brief), 2012', pdf:'papers/2012-siggraphasia-real-or-fake-faces.pdf'},
+      {n:2, authors:'S. <strong>Fan</strong> et al.', title:'Human Perception of Visual Realism for Photo and CG Face Images', venue:'ACM Trans. Applied Perception, 2014', pdf:'papers/2014-tap-visual-realism-faces.pdf'},
+      {n:3, authors:'S. <strong>Fan</strong> et al.', title:'An Automated Estimator of Image Visual Realism Based on Human Cognition', venue:'CVPR, 2014', pdf:'papers/2014-cvpr-visual-realism-estimator.pdf'},
+      {n:4, authors:'S. <strong>Fan</strong> et al.', title:'A Paradigm for Building Generalized Models of Human Visual Perception', venue:'CVPR, 2016', pdf:'papers/2016-cvpr-generalized-perception-models.pdf'},
+      {n:5, authors:'S. <strong>Fan</strong> et al.', title:'Image Visual Realism: From Human Perception to Machine Computation', venue:'IEEE TPAMI, 2018', pdf:'papers/2018-tpami-image-visual-realism.pdf'},
+      {n:6, authors:'S. <strong>Fan</strong> et al.', title:'A Deeper Look at Human Visual Perception of Images', venue:'SN Computer Science, 2020', pdf:'papers/2020-sncs-deeper-look-visual-perception.pdf'},
+      {n:7, authors:'S. Wang, S. <strong>Fan</strong> et al.', title:'Revealing the World of Autism Through the Lens of a Camera', venue:'Current Biology, 2016', pdf:'papers/2016-current-biology-autism-camera.pdf'}
+    ]
+  },
+  {
+    id:"part2", no:"Part II", title:"Modelling human responses",
+    keys:"visual attention · emotion · trust · technology adoption",
+    papers:[
+      {n:8, authors:'S. <strong>Fan</strong> et al.', title:'A Correlational Study Between Human Attention and High-level Image Perception', venue:'Journal of Vision, 2017', pdf:'papers/2017-jov-attention-highlevel-perception.pdf'},
+      {n:9, authors:'S. <strong>Fan</strong> et al.', title:'The Role of Visual Attention in Sentiment Prediction', venue:'ACM Multimedia, 2017', pdf:'papers/2017-acmmm-visual-attention-sentiment.pdf'},
+      {n:10, authors:'S. <strong>Fan</strong> et al.', title:'Emotional Attention: A Study of Image Sentiment and Visual Attention', venue:'CVPR, 2018', tags:[{t:'Spotlight'}], pdf:'papers/2018-cvpr-emotional-attention.pdf'},
+      {n:11, authors:'M. Cordel, S. <strong>Fan</strong> et al.', title:'Emotion-Aware Human Attention Prediction', venue:'CVPR, 2019', pdf:'papers/2019-cvpr-emotion-aware-attention.pdf'},
+      {n:12, authors:'S. <strong>Fan</strong> et al.', title:'Emotional Attention: From Eye Tracking to Computational Modeling', venue:'IEEE TPAMI, 2022', pdf:'papers/2022-tpami-emotional-attention-modeling.pdf'},
+      {n:13, authors:'S. <strong>Fan</strong>, R. Jain, M. Kankanhalli', title:'A Comprehensive Picture of Factors Affecting User Willingness to Use Mobile Health Apps', venue:'ACM Trans. Computing for Healthcare, 2024', tags:[{t:'ACM Health Best Paper',award:true}], pdf:'papers/2024-acmhealth-mhealth-adoption.pdf'}
+    ]
+  },
+  {
+    id:"part3", no:"Part III", title:"Building human-centred trustworthy AI",
+    keys:"privacy · misinformation · copyright · AI-generated content",
+    papers:[
+      {n:14, authors:'Z. Shen, S. <strong>Fan</strong> et al.', title:'Human-Imperceptible Privacy Protection Against Machines', venue:'ACM Multimedia, 2019', tags:[{t:'Best Student Paper',award:true}], pdf:'papers/2019-acmmm-privacy-protection.pdf'},
+      {n:15, authors:'A. Singh, S. <strong>Fan</strong>, M. Kankanhalli', title:'Human Attributes Prediction Under Privacy-Preserving Conditions', venue:'ACM Multimedia, 2021', pdf:'papers/2021-acmmm-privacy-attributes.pdf'},
+      {n:16, authors:'D. Xu, S. <strong>Fan</strong>, M. Kankanhalli', title:'Combating Misinformation in the Era of Generative AI Models', venue:'ACM Multimedia, 2023', tags:[{t:'Brave New Ideas'}], pdf:'papers/2023-acmmm-combating-misinformation.pdf'},
+      {n:17, authors:'S. <strong>Fan</strong>, B. Koenig, N. Memon, M. Kankanhalli', title:'Fighting Misinformation on Social Media: Why People Share Fake News &amp; Whether Credibility Indicators Help', venue:'IEEE Computer, 2026', pdf:'papers/2026-ieeecomputer-fighting-misinformation.pdf'},
+      {n:18, authors:'Z. Shen*, S. <strong>Fan</strong>* et al.', title:'Modeling Human Responses to Multimodal AI Content', venue:'IEEE Computer, 2026', tags:[{t:'Cover Feature'},{t:'Co-first authors'}], pdf:'papers/2026-ieeecomputer-modeling-human-responses.pdf'},
+      {n:19, authors:'J. Hu, S. <strong>Fan</strong>, T. Sim', title:'Seeing Through Deepfakes: A Human-Inspired Framework for Multi-Face Detection', venue:'ICCV, 2025', pdf:'papers/2025-iccv-seeing-through-deepfakes.pdf'},
+      {n:20, authors:'Z. Liu, C. Shuai, S. <strong>Fan</strong> et al.', title:'Harnessing Frequency Spectrum Insights for Image Copyright Protection Against Diffusion Models', venue:'CVPR, 2025', pdf:'papers/2025-cvpr-frequency-copyright-protection.pdf'},
+      {n:21, authors:'D. Xu, S. <strong>Fan</strong>, H. Cheng, M. Kankanhalli', title:'RW-Post: Auditable Evidence-Grounded Multimodal Fact-Checking in the Wild', venue:'PPMisDet Workshop, CVPR, 2026', tags:[{t:'Best Paper',award:true}], pdf:'papers/2026-cvpr-ppmisdet-rwpost.pdf'},
+      {n:22, authors:'S. <strong>Fan</strong> et al.', title:'Machine Learning and Misinformation', venue:'Oxford Handbook of Misinformation &amp; Disinformation, OUP', tags:[{t:'In press'}], pdf:null, status:'In press'}
+    ]
+  }
+];
+
+const listEl = document.getElementById('list');
+const noResult = document.getElementById('noresult');
+const countEl = document.getElementById('count');
+const pdfIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>';
+
+let total = 0;
+PARTS.forEach(part=>{
+  const sec = document.createElement('section');
+  sec.className='part'; sec.id=part.id;
+  sec.innerHTML = `
+    <div class="part-head">
+      <span class="part-no">${part.no}</span>
+      <h2>${part.title}</h2>
+    </div>
+    <p class="part-keys">${part.keys}</p>`;
+  const ol = document.createElement('ol'); ol.className='papers';
+  part.papers.forEach(p=>{
+    total++;
+    const li = document.createElement('li'); li.className='paper';
+    const tags = (p.tags||[]).map(t=>`<span class="tag${t.award?' award':''}">${t.t}</span>`).join('');
+    const action = p.pdf
+      ? `<a class="pdf" href="${p.pdf}" download>${pdfIcon}PDF</a>`
+      : `<span class="soon">${p.status||'Coming soon'}</span>`;
+    li.innerHTML = `
+      <div class="num">[${p.n}]</div>
+      <div class="content">
+        <p class="title">${p.title}</p>
+        <p class="authors">${p.authors}</p>
+        <p class="venue">${p.venue}</p>
+        ${tags?`<div class="tags">${tags}</div>`:''}
+      </div>
+      <div class="actions-cell">${action}</div>`;
+    li.dataset.text = (p.title+' '+p.authors+' '+p.venue).replace(/<[^>]+>/g,'').toLowerCase();
+    ol.appendChild(li);
+  });
+  sec.appendChild(ol);
+  listEl.appendChild(sec);
+});
+
+function updateCount(v){ countEl.textContent = v===total ? `${total} papers` : `${v} of ${total}`; }
+updateCount(total);
+
+const filter = document.getElementById('filter');
+filter.addEventListener('input', ()=>{
+  const q = filter.value.trim().toLowerCase();
+  let shown=0;
+  document.querySelectorAll('li.paper').forEach(li=>{
+    const hit = !q || li.dataset.text.includes(q);
+    li.hidden = !hit; if(hit) shown++;
+  });
+  document.querySelectorAll('section.part').forEach(sec=>{
+    const any=[...sec.querySelectorAll('li.paper')].some(li=>!li.hidden);
+    sec.style.display = any ? '' : 'none';
+  });
+  noResult.classList.toggle('show', shown===0);
+  updateCount(shown);
+});
+</script>
+</body>
+</html>
